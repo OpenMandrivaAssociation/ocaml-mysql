@@ -1,7 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 2
-%define ocaml_sitelib %(if [ -x /usr/bin/ocamlc ]; then ocamlc -where;fi)/site-lib
+%define release	%mkrel 3
 
 Name:		%{name}
 Version:	%{version}
@@ -24,6 +23,7 @@ This module provides access to MySQL databases, roughly following the C API.
 Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:   mysql-devel
+Requires:   %{name} = %{contrib}-%{release}
 
 %description devel
 This package contains the development files needed to build applications
@@ -33,7 +33,7 @@ using %{name}.
 %setup -q
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
@@ -46,10 +46,14 @@ rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.owner
 %clean
 rm -rf %{buildroot}
 
-%files devel
+%files
 %defattr(-,root,root)
 %doc CHANGES COPYING README VERSION
-%{ocaml_sitelib}/mysql
+%dir %{ocaml_sitelib}/mysql
+%{ocaml_sitelib}/mysql/*.cmi
+
+%files devel
+%defattr(-,root,root)
+%{ocaml_sitelib}/mysql/*
+%exclude %{ocaml_sitelib}/mysql/*.cmi
 %{ocaml_sitelib}/stublibs/dllmysql_stubs.so
-
-
