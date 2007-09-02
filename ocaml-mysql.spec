@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 Name:		%{name}
 Version:	%{version}
@@ -14,6 +14,7 @@ BuildRequires:	ocaml
 BuildRequires:	camlp4
 BuildRequires:	mysql-devel
 BuildRequires:  findlib
+Conflicts:      %{name}-devel < 1.0.4-4mdv2008.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -23,7 +24,7 @@ This module provides access to MySQL databases, roughly following the C API.
 Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:   mysql-devel
-Requires:   %{name} = %{contrib}-%{release}
+Requires:   %{name} = %{version}-%{release}
 
 %description devel
 This package contains the development files needed to build applications
@@ -51,9 +52,9 @@ rm -rf %{buildroot}
 %doc CHANGES COPYING README VERSION
 %dir %{ocaml_sitelib}/mysql
 %{ocaml_sitelib}/mysql/*.cmi
+%{ocaml_sitelib}/stublibs/dllmysql_stubs.so
 
 %files devel
 %defattr(-,root,root)
 %{ocaml_sitelib}/mysql/*
 %exclude %{ocaml_sitelib}/mysql/*.cmi
-%{ocaml_sitelib}/stublibs/dllmysql_stubs.so
