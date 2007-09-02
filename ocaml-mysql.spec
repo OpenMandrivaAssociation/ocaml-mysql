@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 4
+%define release	%mkrel 5
 
 Name:		%{name}
 Version:	%{version}
@@ -14,7 +14,6 @@ BuildRequires:	ocaml
 BuildRequires:	camlp4
 BuildRequires:	mysql-devel
 BuildRequires:  findlib
-Conflicts:      %{name}-devel < 1.0.4-4mdv2008.0
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
