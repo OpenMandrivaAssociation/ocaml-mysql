@@ -14,6 +14,7 @@ BuildRequires:	ocaml
 BuildRequires:	camlp4
 BuildRequires:	mysql-devel
 BuildRequires:  findlib
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This module provides access to MySQL databases, roughly following the C API.
