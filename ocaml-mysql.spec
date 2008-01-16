@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 5
+%define release	%mkrel 6
 
 Name:		%{name}
 Version:	%{version}
@@ -34,7 +34,7 @@ using %{name}.
 
 %build
 %configure2_5x
-%make
+%make reallyall
 
 %install
 rm -rf %{buildroot}
