@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 10
+%define release	%mkrel 11
 
 Name:		%{name}
 Version:	%{version}
@@ -51,9 +51,13 @@ rm -rf %{buildroot}
 %doc CHANGES COPYING README VERSION
 %dir %{ocaml_sitelib}/mysql
 %{ocaml_sitelib}/mysql/*.cmi
+%{ocaml_sitelib}/mysql/*.cma
+%{ocaml_sitelib}/mysql/META
 %{ocaml_sitelib}/stublibs/dllmysql_stubs.so
 
 %files devel
 %defattr(-,root,root)
-%{ocaml_sitelib}/mysql/*
-%exclude %{ocaml_sitelib}/mysql/*.cmi
+%{ocaml_sitelib}/mysql/*.a
+%{ocaml_sitelib}/mysql/*.cmx
+%{ocaml_sitelib}/mysql/*.cmxa
+%{ocaml_sitelib}/mysql/*.mli
