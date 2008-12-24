@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 11
+%define release	%mkrel 12
 
 Name:		%{name}
 Version:	%{version}
@@ -13,7 +13,7 @@ Group:		Development/Other
 BuildRequires:	ocaml
 BuildRequires:	camlp4
 BuildRequires:	mysql-devel
-BuildRequires:  findlib
+BuildRequires:  ocaml-findlib
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -38,10 +38,9 @@ using %{name}.
 
 %install
 rm -rf %{buildroot}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}
-install -d -m 755 %{buildroot}/%{ocaml_sitelib}/stublibs
-make install OCAMLFIND_INSTFLAGS="-destdir %{buildroot}/%{ocaml_sitelib}"
-rm -f %{buildroot}/%{ocaml_sitelib}/stublibs/*.owner
+install -d -m 755 %{buildroot}/%{_libdir}/ocaml/stublibs
+make install OCAMLFIND_INSTFLAGS="-destdir %{buildroot}/%{_libdir}/ocaml"
+rm -f %{buildroot}/%{_libdir}/ocaml/stublibs/*.owner
 
 %clean
 rm -rf %{buildroot}
@@ -49,15 +48,15 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc CHANGES COPYING README VERSION
-%dir %{ocaml_sitelib}/mysql
-%{ocaml_sitelib}/mysql/*.cmi
-%{ocaml_sitelib}/mysql/*.cma
-%{ocaml_sitelib}/mysql/META
-%{ocaml_sitelib}/stublibs/dllmysql_stubs.so
+%dir %{_libdir}/ocaml/mysql
+%{_libdir}/ocaml/mysql/*.cmi
+%{_libdir}/ocaml/mysql/*.cma
+%{_libdir}/ocaml/mysql/META
+%{_libdir}/ocaml/stublibs/dllmysql_stubs.so
 
 %files devel
 %defattr(-,root,root)
-%{ocaml_sitelib}/mysql/*.a
-%{ocaml_sitelib}/mysql/*.cmx
-%{ocaml_sitelib}/mysql/*.cmxa
-%{ocaml_sitelib}/mysql/*.mli
+%{_libdir}/ocaml/mysql/*.a
+%{_libdir}/ocaml/mysql/*.cmx
+%{_libdir}/ocaml/mysql/*.cmxa
+%{_libdir}/ocaml/mysql/*.mli
