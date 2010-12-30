@@ -1,6 +1,6 @@
 %define name	ocaml-mysql
 %define version	1.0.4
-%define release	%mkrel 14
+%define release	%mkrel 16
 
 Name:		%{name}
 Version:	%{version}
