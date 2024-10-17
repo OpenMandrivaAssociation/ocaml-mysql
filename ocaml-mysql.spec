@@ -7,7 +7,7 @@ Version:	%{version}
 Release:	%{release}
 Summary:	Bindings for interacting with MySQL databases from ocaml
 Source: 	http://raevnos.pennmush.org/code/ocaml-mysql/%{name}-%{version}.tar.bz2
-URL:		http://raevnos.pennmush.org/code/ocaml-mysql/
+URL:		https://raevnos.pennmush.org/code/ocaml-mysql/
 License:	GPL
 Group:		Development/Other
 BuildRequires:	ocaml
